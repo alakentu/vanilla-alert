@@ -1,0 +1,187 @@
+/* VANILLA ALERT CSS - v1.3 */
+.vanilla-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.vanilla-alert-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--va-overlay-color, #000);
+  opacity: var(--va-overlay-opacity, 0.5);
+}
+
+.vanilla-alert-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  width: 400px;
+  max-width: 90vw;
+  max-height: 80vh;
+  z-index: 1051;
+  border: 1px solid rgba(0,0,0,0.08);
+  animation: va-fadeIn 0.3s ease-out;
+  overflow-y: auto;
+  box-sizing: border-box;
+  cursor: grab;
+}
+
+.vanilla-alert-dialog.dragging {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  opacity: 0.98;
+}
+
+.vanilla-alert-title {
+  font-size: 1.25rem;
+  margin: 0 0 15px 0;
+  font-weight: 600;
+  color: #222;
+  padding-right: 25px;
+}
+
+.vanilla-alert-content {
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  max-height: calc(80vh - 180px);
+  overflow-y: auto;
+}
+
+.vanilla-alert-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vanilla-alert-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  min-width: 80px;
+  font-family: inherit;
+}
+
+.vanilla-alert-button-primary {
+  background-color: var(--va-primary-color, #4361ee);
+  color: white;
+}
+
+.vanilla-alert-button-primary:hover {
+  background-color: var(--va-primary-hover, #3a56d4);
+}
+
+.vanilla-alert-button-secondary {
+  background-color: var(--va-secondary-color, #6c757d);
+  color: white;
+}
+
+.vanilla-alert-button-secondary:hover {
+  background-color: var(--va-secondary-hover, #5a6268);
+}
+
+.vanilla-alert-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #aaa;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vanilla-alert-close:hover {
+  color: #777;
+}
+
+/* Themes */
+.vanilla-alert-theme-primary {
+  --va-primary-color: #4361ee;
+  --va-primary-hover: #3a56d4;
+}
+
+.vanilla-alert-theme-success {
+  --va-primary-color: #2ecc71;
+  --va-primary-hover: #27ae60;
+}
+
+.vanilla-alert-theme-warning {
+  --va-primary-color: #f39c12;
+  --va-primary-hover: #e67e22;
+}
+
+.vanilla-alert-theme-danger {
+  --va-primary-color: #e74c3c;
+  --va-primary-hover: #c0392b;
+}
+
+.vanilla-alert-theme-info {
+  --va-primary-color: #3498db;
+  --va-primary-hover: #2980b9;
+}
+
+/* Animations */
+@keyframes va-fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Prompt Input */
+.va-prompt-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  transition: border 0.2s;
+}
+
+.va-prompt-input:focus {
+  outline: none;
+  border-color: var(--va-primary-color, #4361ee);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .vanilla-alert-dialog {
+    width: 95vw;
+    padding: 15px;
+  }
+  
+  .vanilla-alert-buttons {
+    justify-content: center;
+  }
+  
+  .vanilla-alert-button {
+    flex-grow: 1;
+  }
+}
